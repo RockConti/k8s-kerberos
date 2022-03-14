@@ -7,9 +7,13 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
+    - port: 749
       targetPort: http
       protocol: TCP
       name: http
+    - port: 88
+      targetPort: port2
+      protocol: UDP
+      name: port2
   selector:
     {{- include "kerberos.selectorLabels" . | nindent 4 }}
